@@ -15,8 +15,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build:staging": "env-cmd -f .env.staging npm run build",
-    "build:local": "env-cmd -f .env.local npm run build",
+    "clean": "rm -rf node_modules && npm install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
