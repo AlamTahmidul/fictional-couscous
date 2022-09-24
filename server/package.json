@@ -4,8 +4,7 @@
   "description": "Server Code Stuff",
   "main": "server.js",
   "scripts": {
-    "dev:start": "env-cmd -f .env.local nodemon ./server.js",
-    "start": "run-p dev:*",
+    "start": "env-cmd -f .env.local nodemon ./server.js",
     "clean": "rm -rf node_modules && npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:staging": "env-cmd -f .env.staging npm run build",
