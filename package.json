@@ -1,0 +1,23 @@
+{
+  "name": "fictional-couscous",
+  "version": "1.0.0",
+  "description": "Hackathon Project...",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "cd client && rm -rf node_modules && npm install && cd ../server && rm -rf node_modules && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlamTahmidul/fictional-couscous.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlamTahmidul/fictional-couscous/issues"
+  },
+  "homepage": "https://github.com/AlamTahmidul/fictional-couscous#readme"
+}
