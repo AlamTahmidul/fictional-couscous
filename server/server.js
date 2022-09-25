@@ -6,7 +6,7 @@ const knex = require('./utils/knex').instance();
 
 // Server Config
 dotenv.config();
-const PORT = process.env.PORT_APP;
+const PORT = process.env.PORT_APP || 4000;
 const app = express();
 
 // Setup Middleware

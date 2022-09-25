@@ -17,7 +17,7 @@ function authManager() {
                 })
             }
 
-            const verified = jwt.verify(token, process.env.JWT_SECRET)
+            const verified = jwt.verify(token, process.env.JWT_SECRET || "addapet2022Hacks")
             // console.log("verified.userId: " + verified.userId);
             req.userId = verified.userId;
 
@@ -39,7 +39,7 @@ function authManager() {
                 return null;
             }
 
-            const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+            const decodedToken = jwt.verify(token, process.env.JWT_SECRET || "addapet2022Hacks");
             return decodedToken.userId;
         } catch (err) {
             return null;
@@ -49,7 +49,7 @@ function authManager() {
     signToken = (userId) => {
         return jwt.sign({
             userId: userId
-        }, process.env.JWT_SECRET);
+        }, process.env.JWT_SECRET || "addapet2022Hacks");
     }
 
     return this;
