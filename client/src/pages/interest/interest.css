@@ -1,5 +1,10 @@
+#whatever {
+  background-color: lightblue;
+  height: 100vh;
+  width: 100;
+}
+
 #interest-container {
-  background-color: purple;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 20px;

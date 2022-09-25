@@ -1,14 +1,18 @@
-p {
+.animal-info-text {
   font-size: 12px;
   margin: 5px 0px;
+  font-weight: bold;
+
 }
 
 .animal-profile {
-  background-color: yellow;
+  background-color: lightgreen;
   display: grid;
   grid-template-columns: 1.5fr 3fr 1fr;
   height: 250px;
   margin: 20px;
+  border: solid black 2px;
+  border-radius: 10px;
 }
 
 .animal-picture-container {
@@ -23,11 +27,11 @@ p {
 }
 
 .animal-info {
-  background-color: aqua;
+  background-color: yellowgreen;
 }
 
 .button-container {
-  background-color: lightcyan;
+  /* background-color: lightcyan; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -35,14 +39,14 @@ p {
 }
 
 .button1 {
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .button2 {
-  background-color: lightblue;
+  /* background-color: lightblue; */
   width: 100%;
   display: flex;
   justify-content: center;

@@ -10,12 +10,11 @@ export default class Popup extends Component {
       handlerName: "Pet Center",
       handlerAddress: "3 Split Rail Ln, East Setauket, NY, 11733",
       handlerPhone: "1234567890",
+      hoursOperation: "9AM-5PM",
     };
   }
 
   getHandler = () => {};
-
-  openChat = () => {};
 
   render() {
     return (
@@ -25,7 +24,7 @@ export default class Popup extends Component {
             <p className="popup-text">{this.state.handlerName}</p>
             <p className="popup-text">{this.state.handlerAddress}</p>
             <p className="popup-text">{this.state.handlerPhone}</p>
-            <Button onClick={this.openChat}>Chat Now!</Button>
+            <p className="popup-text">{this.state.hoursOperation}</p>
             <Button onClick={this.props.onClose} id="close-button">Close Window</Button>
           </Card.Body>
         </Card>

@@ -1,8 +1,3 @@
-body {
-  display: flex;
-  justify-content: center;
-}
-
 #sign-in-page {
   text-align: center;
   width: 30em;
@@ -13,10 +8,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-button {
-  margin: 0.5em
 }
 
 #sign-up-button {
