@@ -1,6 +1,5 @@
 const auth = require('../auth');
-const knex = require("../utils/knex").instance();
-// const User = require('../models/user-model');
+const User = require('../models/user-model');
 const bcrypt = require('bcryptjs');
 
 getLoggedIn = async (req, res) => {
@@ -14,9 +13,8 @@ getLoggedIn = async (req, res) => {
             })
         }
 
-        // const loggedInUser = await User.findOne({ _id: userId });
-        const loggedInUser = await knex('users').where({ id: userId });
-        console.log(loggedInUser);
+        const loggedInUser = await User.findOne({ _id: userId });
+        // console.log("loggedInUser: " + loggedInUser);
 
         return res.status(200).json({
             loggedIn: true,
@@ -36,18 +34,16 @@ loginUser = async (req, res) => {
     console.log("loginUser");
     try {
         const { email, password } = req.body;
-        console.log(req.body);
+
         if (!email || !password) {
             return res
                 .status(400)
                 .json({ errorMessage: "Please enter all required fields." });
         }
 
-        // const existingUser = await User.findOne( {email: email} );
-        const existingUser = await knex('users').where({ email: email }).then(user => {
-            return user[0];});
-        console.log("existingUser: " + existingUser);
-        if (!existingUser || existingUser == "") {
+        const existingUser = await User.findOne( {email: email} );
+        // console.log("existingUser: " + existingUser);
+        if (!existingUser) {
             return res
                 .status(401)
                 .json({
@@ -67,8 +63,7 @@ loginUser = async (req, res) => {
         }
 
         // LOGIN THE USER
-        // const token = auth.signToken(existingUser._id);
-        const token = auth.signToken(existingUser.id);
+        const token = auth.signToken(existingUser._id);
         console.log(token);
 
         res.cookie("token", token, {
@@ -110,7 +105,7 @@ registerUser = async (req, res) => {
                 .json({ errorMessage: "Please enter all required fields." });
         }
         console.log("all fields provided");
-        if (password.length < 6) {
+        if (password.length < 8) {
             return res
                 .status(400)
                 .json({
@@ -126,75 +121,47 @@ registerUser = async (req, res) => {
                 })
         }
         console.log("password and password verify match");
-        // await knex.schema.hasTable('users');
-        // const existingUser = await User.findOne( {email: email} );
-        // console.log(req.body);
-        const retCheck = await knex('users').where( {email: email} )
-            .then((user) => {
-                console.log("existingUser: " + user);
-                if (user != "")
-                {   
-                    return {
-                        success: false,
-                        errorMessage: "An account with this email already exists."
-                    };
-                }
-            })
-            .catch(err => console.log('User not found!'));
-        if (retCheck && !retCheck.success) {
-            return res.status(400).json(retCheck);
+
+        const existingUser = await User.findOne( {email: email} );
+        console.log("existingUser: " + existingUser);
+        if (existingUser) {
+            return res
+                .status(400)
+                .json({
+                    success: false,
+                    errorMessage: "An account with this email already exists."
+                })
         }
-        // if (existingUser) {
-        //     return res
-        //         .status(400)
-        //         .json({
-        //             success: false,
-        //             errorMessage: "An account with this email already exists."
-        //         })
-        // }
 
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const passwordHash = await bcrypt.hash(password, salt);
         console.log("passwordHash: " + passwordHash);
 
-        // const newUser = new User({
-        //     first, last, email, passwordHash
-        // });
-        // const savedUser = await newUser.save();
-            const addedUser = await knex('users')
-            .insert(
-                {
-                    first: first,
-                    last: last,
-                    email: email,
-                    passwordHash: passwordHash
-                },
-                ['id', 'first', 'last', 'email', 'passwordHash']
-            ).then(user => {
-                const token = auth.signToken(user.id);
-                return {user: user[0], token: token};
-            }).catch(err => console.log("Same Email..."));
-            // console.log(savedUser);
+        const newUser = new User({
+            first, last, email, passwordHash
+        });
+        const savedUser = await newUser.save();
+        // console.log("new user saved: " + savedUser._id);
 
         // LOGIN THE USER
-        // const token = auth.signToken(savedUser._id);
-        // const token = auth.signToken(savedUser.id);
+        const token = auth.signToken(savedUser._id);
         // console.log("token:" + token);
-            // console.log(addedUser);
-        await res.cookie("token", addedUser.token, {
+
+        await res.cookie("token", token, {
             httpOnly: true,
             secure: true,
             sameSite: "none"
         }).status(200).json({
             success: true,
             user: {
-                id: addedUser.user.id,
-                first: addedUser.user.first,
-                last: addedUser.user.last,
-                email: addedUser.user.email
+                id: savedUser._id,
+                first: savedUser.first,
+                last: savedUser.last,
+                email: savedUser.email       
             }
-        });
+        })
+
         console.log("token sent");
 
     } catch (err) {

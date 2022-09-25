@@ -1,46 +1,37 @@
-const User = require('../models/user-model');
+const knex = require('../utils/knex').instance();
 
-module.exports.getUser = async (req, res) => {
-    console.log("Finding user: " + JSON.stringify(req.params.id));
+// Retrieve
+module.exports.getUser = (req, res) => {
+    knex('users')
+        .where({ id: req.params.id })
+        .then((user) => res.status(200).json(user))
+        .catch((err) => res.status(400).json(err));
+};
 
-    await User.findById(req.params.id)
-    .then(user => {return res.status(200).json({success: true, user: user});})
-    .catch(err => {return res.status(400).json({ success: false, message: "User not found", err: err})});
+// Update
+module.exports.updateUser = (req, res) => {
+    knex('users')
+        .where({ id: req.params.id })
+        .update(
+            {
+                first: req.body.first,
+                last: req.body.last,
+                email: req.body.email,
+                interests: req.body.interests
+            }, ['first', 'last', 'email', 'interests']
+        )
+        .then((user) => res.status(200).json(user[0]))
+        .catch((err) => res.status(500).json(err));
 }
 
-module.exports.updateUser = async (req, res) => {
-    const body = req.body;
-
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: 'No body'
+// DELETE
+module.exports.deleteUser = (req, res) => {
+    knex('users')
+      .where({ id: req.params.id })
+      .del(['id', 'first','last', 'email'])
+      .then((user) => {
+        // console.log(user);
+        res.status(200).json(user);
         })
-    }
-
-    User.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-            "email": body.email,
-            "first": body.first,
-            "last": body.last,
-            "interests": body.interests,
-            "location": body.location
-        },
-        {
-            returnDocument: "after"
-        }
-    ).then(user => res.status(200).json({ success: true, user: user}))
-    .catch(err => res.status(400).json({ success: false, message: "User Not Found", err: err }));
-
-}
-
-module.exports.deleteUser = async (req, res) => {
-    User.findOneAndRemove( {_id: req.params.id}, (err, user) => {
-        if (err) {
-            res.status(400).json({ success: false, err: err });
-        } else {
-            res.status(200).json({success: true, user: user});
-        }
-    });
-}
+      .catch((err) => res.status(500).json(err));
+  };
