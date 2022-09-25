@@ -1,23 +1,22 @@
 
 *{
     text-align: center;
-    background-color:#C3DDF9;
+    background:#C3DDF9;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 section{
     height: 100vh;
-    margin:0px 100px 0px 100px;
+    margin:100px;
 }
 span{
     font-weight: bold;
 }
 .block{
-    background: white;
-    height:300px;
-    
+    background: #C3DDF9;
+    height:400px;
 }
+
 .q{
     width:30%;
     display: inline-block;
@@ -26,6 +25,7 @@ span{
     height:80%;
     border:5px black;
 }
+
 h2{
     background-color:white;
     margin-top:5px;
@@ -35,32 +35,36 @@ h2{
     transform: scale(1.05);
     transition: transform .5s;
 }
+.q{
+    font-size: 10px;
+}
 .bg-image{
     display:table-cell;
-    object-fit: fill;
     overflow:hidden;
     vertical-align:left;
     height: auto;
     width: auto\9; /* ie8 */
 }
+body{
+    overflow-x:hidden;
+}
+
 .bg-image2{
     display:table-cell;
-    object-fit: fill;
     overflow:hidden;
-    vertical-align:left;
+    vertical-align:right;
     height: auto;
     width: auto\9; /* ie8 */
-
 }
+
 .bg-image3{
     display:table-cell;
-    object-fit: fill;
     overflow:hidden;
     vertical-align:left;
     height: auto;
     width: auto\9; /* ie8 */
-
 }
+
 .bg-image:hover{
     transform: scale(1.1);
     transition: transform 1s;
@@ -73,7 +77,11 @@ h2{
     transform: scale(1.1);
     transition: transform 1s;
 }
-.scroll{
-    height:100vh;
-    overflow: hidden;
+.text{
+    margin:0px 400px 0px 400px;
 }
+@media screen and (max-width: 600px) {
+    .text{
+        margin:0px 600px 0px 600px;
+    }
+  }

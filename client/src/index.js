@@ -5,12 +5,18 @@ import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import Signin from './pages/signin/signin';
 import Signup from './pages/signup/signup';
+import Homepage from './pages/homepage/homepage';
+import Interest from './pages/interest/interest';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <Signin /> */}
-    <Signup />
+    {/* <Signup /> */}
+    <Homepage />
+    {/* <Interest /> */}
+    {/* <Signin /> */}
   </React.StrictMode>
 );
 
