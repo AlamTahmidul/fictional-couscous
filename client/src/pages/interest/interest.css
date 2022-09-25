@@ -1,5 +1,9 @@
+*{
+  background-color:rgb(173, 223, 255);
+}
+
 #interest-container {
-  background-color: purple;
+  background-color: rgb(173, 223, 255);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 20px;

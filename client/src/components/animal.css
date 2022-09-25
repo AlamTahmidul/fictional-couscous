@@ -23,11 +23,11 @@ p {
 }
 
 .animal-info {
-  background-color: aqua;
+  background-color: rgb(235, 250, 255);
 }
 
 .button-container {
-  background-color: lightcyan;
+  background-color: rgb(52, 163, 163);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -35,14 +35,14 @@ p {
 }
 
 .button1 {
-  background-color: lightgreen;
+  background-color: rgb(2, 180, 2);
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .button2 {
-  background-color: lightblue;
+  background-color: rgb(75, 75, 255);
   width: 100%;
   display: flex;
   justify-content: center;
