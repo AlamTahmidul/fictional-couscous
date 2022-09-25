@@ -18,10 +18,11 @@ app.use(express.json())
 app.use(cookieParser())
 
 // SETUP OUR OWN ROUTERS AS MIDDLEWARE
-const authRouter = require('./routes/auth-router')
-app.use('/auth', authRouter);
-const appRouter = require('./routes/appRouter')
-app.use('/api', appRouter)
+// const authRouter = require('./routes/auth-router')
+// app.use('/auth', authRouter);
+// const usersRouter = require('./routes/users-router')
+// app.use('/api', usersRouter)
+require('./routes/routes')(app);
 
 // INITIALIZE OUR DATABASE OBJECT
 const db = require('./db')
