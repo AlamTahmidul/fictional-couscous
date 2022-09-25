@@ -1,21 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import Signin from './pages/signin/signin';
-import Homepage from './pages/homepage/homepage';
-import Interests from './pages/viewerc2/viewerc2';
+import Signup from './pages/signup/signup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
     {/* <Signin /> */}
-    {/* <Homepage /> */}
-    <Interests />
-    
+    <Signup />
   </React.StrictMode>
 );
 
