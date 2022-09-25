@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true })
-    .catch(e => console.error('Connection error ', e.message));
+    .then(() => console.log("MongoDB running..."))
+    .catch(e => console.error('Connection error ', e));
 
 const db = mongoose.connection;
 

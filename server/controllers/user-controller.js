@@ -3,15 +3,9 @@ const User = require('../models/user-model');
 module.exports.getUser = async (req, res) => {
     console.log("Finding user: " + JSON.stringify(req.params.id));
 
-    await User.findById( {_id: req.params.id}, (err, user) => {
-        if (err) {
-            return res.status(400).json( {success: false, err: err});
-        } else {
-            console.log("Found user");
-        }
-    })
-    .then((user) => res.status(200).json({ success: true, user: user}))
-    .catch(err => res.status(400).json({ success: false, message: "User not found", err: err}));
+    await User.findById(req.params.id)
+    .then(user => {return res.status(200).json({success: true, user: user});})
+    .catch(err => {return res.status(400).json({ success: false, message: "User not found", err: err})});
 }
 
 module.exports.updateUser = async (req, res) => {
@@ -25,15 +19,13 @@ module.exports.updateUser = async (req, res) => {
     }
 
     User.findOneAndUpdate(
-        { _id: body._id },
+        { _id: req.params.id },
         {
-            $set: {
-                "email": body.email,
-                "first": body.first,
-                "last": body.last,
-                "interests": body.interests,
-                "location": body.location
-            }
+            "email": body.email,
+            "first": body.first,
+            "last": body.last,
+            "interests": body.interests,
+            "location": body.location
         },
         {
             returnDocument: "after"
@@ -44,7 +36,7 @@ module.exports.updateUser = async (req, res) => {
 }
 
 module.exports.deleteUser = async (req, res) => {
-    User.findOneAndRemove( {_id: req.body._id}, (err, user) => {
+    User.findOneAndRemove( {_id: req.params.id}, (err, user) => {
         if (err) {
             res.status(400).json({ success: false, err: err });
         } else {

@@ -3,14 +3,15 @@ const Schema = mongoose.Schema;
 
 const AnimalSchema = new Schema(
     {
+        type: { type: String, required: true },
+        breed: { type: String },
         name: { type: String, required: true },
-        breed: { type: String, required: true },
-        vaccines: { type: [String], required: true },
-        age: { type: Number, required: true },
+        age: { type: Number },
+        sex: { type: String },
         description: { type: String, required: true },
-        handler: { type: String, required: true },
-        images: { type: [String] },
-        views: {type: Number},
+        vaccines: { type: [String] },
+        handlerID: { type: Number },
+        images: { type: [String] }
     },
     { timestamps: true }
 );
