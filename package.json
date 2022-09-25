@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "cd client && rm -rf node_modules && npm install && cd ../server && rm -rf node_modules && npm install"
+    "clean": "cd client && rm -rf node_modules && npm install && cd ../server && rm -rf node_modules && npm install",
+    "start": "cd server && rm -rf node_modules && npm i && node server.js"
   },
   "repository": {
     "type": "git",
