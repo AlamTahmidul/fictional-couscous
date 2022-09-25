@@ -1,0 +1,29 @@
+*{
+  background-color:rgb(173, 223, 255);
+}
+
+#interest-container {
+  background-color: rgb(173, 223, 255);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 40px;
+}
+
+@media (max-width: 750px) {
+  #interest-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 999px) {
+  #interest-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  #interest-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

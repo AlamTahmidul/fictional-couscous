@@ -1,32 +1,48 @@
-import React, { useState } from "react";
+import "./signin.css";
 import { Card, Form, Button } from "react-bootstrap";
+import { useForm } from "../hooks/useForm";
 
 export default function Signin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [values, setValues] = useForm({ email: "", password: "" });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    console.log(values.email, values.password);
   };
 
   return (
-    <Card bg="light">
-      <Card.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Control
-            placeholder="Email Address"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          ></Form.Control>
-          <Form.Control
-            placeholder="Password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          ></Form.Control>
-          <Button type="submit">Sign In</Button>
-        </Form>
-      </Card.Body>
-    </Card>
+    <div id="sign-in-page">
+      <h1>Sign In</h1>
+      <Card bg="light">
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Control
+              name="email"
+              placeholder="Email Address"
+              value={values.email}
+              onChange={setValues}
+              className="input-field"
+            ></Form.Control>
+            <Form.Control
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={values.password}
+              onChange={setValues}
+              className="input-field"
+            ></Form.Control>
+            <div>
+              <Button type="submit" id="sign-in-button">
+                Sign In
+              </Button>
+            </div>
+            <hr />
+            <div>
+              <Button id="sign-up-button">Sign Up</Button>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }

@@ -1,0 +1,14 @@
+
+
+.images{
+    width:auto;
+    text-align:center;
+    padding:20px;
+}
+
+img{
+    margin-left:50px;
+    max-width: 60%;
+    max-height:600px;
+    float:left;
+}
