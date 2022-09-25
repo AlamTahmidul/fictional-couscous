@@ -13,11 +13,11 @@ export default class Animal extends Component {
           ></img>
         </div>
         <div className="animal-info">
-          <p>Type: {this.props.animal.type}</p>
-          <p>Breed: {this.props.animal.breed}</p>
-          <p>Name: {this.props.animal.name}</p>
-          <p>Sex: {this.props.animal.sex}</p>
-          <p className="description">Description: {this.props.animal.description}</p>
+          <p className="animal-info-text">Type: {this.props.animal.type}</p>
+          <p className="animal-info-text">Breed: {this.props.animal.breed}</p>
+          <p className="animal-info-text">Name: {this.props.animal.name}</p>
+          <p className="animal-info-text">Sex: {this.props.animal.sex}</p>
+          <p className="description animal-info-text">Description: {this.props.animal.description}</p>
         </div>
         <div className="button-container">
           <div className="button1">
