@@ -23,6 +23,9 @@ app.use(cookieParser())
 // app.use('/auth', authRouter);
 // const usersRouter = require('./routes/users-router')
 // app.use('/api', usersRouter)
+app.get('/', (req, res) => {
+    res.render("Running?");
+});
 require('./routes/routes')(app);
 
 // INITIALIZE OUR DATABASE OBJECT
