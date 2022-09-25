@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#sign-up-page {
+  text-align: center;
+  width: 30em;
+  border-radius: 1em;
+  box-shadow: 0 0.188em 1.55em lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin: 0.5em;
+}
+
+#sign-up-button {
+  background-color: green;
+}
+
+.input-field {
+  text-align: center;
+  margin: 1em 0em;
+}
+
+.input-field:focus {
+  outline-color: rgb(32, 177, 255);
+}

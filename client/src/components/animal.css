@@ -1,0 +1,62 @@
+p {
+  font-size: 12px;
+  margin: 5px 0px;
+}
+
+.animal-profile {
+  background-color: yellow;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 1fr;
+  height: 250px;
+  margin: 20px;
+}
+
+.animal-picture-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animal-picture {
+  border-radius: 100%;
+  width: 100%;
+}
+
+.animal-info {
+  background-color: aqua;
+}
+
+.button-container {
+  background-color: lightcyan;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button1 {
+  background-color: lightgreen;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button2 {
+  background-color: lightblue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button1-image {
+  width: 75%;
+}
+
+.button2-image {
+  width: 75%;
+}
+
+.description { 
+  line-height: 20px; 
+}
+
